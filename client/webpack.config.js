@@ -7,6 +7,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //added workbox plugin
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
+// TODO: Add CSS loaders and babel to webpack.
+
 module.exports = () => {
   return {
     mode: 'development',
@@ -18,15 +20,8 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: './index.html',
-        title: 'Webpack Plugin',
-      }),
       new MiniCssExtractPlugin(),
-      new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'service-worker.js',
-      }),
+      new WorkboxPlugin.GenerateSW()
     ],
 
     module: {
