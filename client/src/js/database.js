@@ -14,7 +14,7 @@ const initdb = async () =>
 
 //allows to post to IndexedDB
 export const putDb = async (content) => {
-  console.log('Post to the ase');
+  console.log('Post to the database');
 
   // Create a connection to the database database and version we want to use.
   const todosDb = await openDB('todos', 1);
